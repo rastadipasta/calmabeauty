@@ -187,7 +187,7 @@ export function HeroVisual() {
     >
       <motion.img
         src="/images/hero-face.jpg"
-        alt="Tretman njege lica u salonu Calma Beauty"
+        alt="Opuštena klijentica tijekom Calma Beauty rituala"
         width="640"
         height="640"
         loading="eager"

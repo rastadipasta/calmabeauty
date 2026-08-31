@@ -33,7 +33,7 @@ const services = [
       'Od dubinskog čišćenja i hidratacije do pažljivo odabranih pilinga — tretman prilagođavamo stanju i potrebama tvoje kože.',
     treatments: ['HydraFacial', 'Kemijski pilinzi', 'Individualna njega'],
     image: '/images/hydrafacial.jpg',
-    alt: 'HydraFacial tretman lica u salonu Calma Beauty',
+    alt: 'Precizan tretman njege lica u salonu Calma Beauty',
   },
   {
     number: '02',
@@ -43,7 +43,7 @@ const services = [
       'Rituali njege osmišljeni su kao predah za tijelo — uz stručan pristup, ugodnu atmosferu i pažnju posvećenu svakom detalju.',
     treatments: ['Njega tijela', 'Piling tijela', 'Tretmani po dogovoru'],
     image: '/images/tijelo.jpg',
-    alt: 'Tretman njege tijela u salonu Calma Beauty',
+    alt: 'Klijentica tijekom opuštajućeg Calma Beauty rituala',
   },
   {
     number: '03',
@@ -53,7 +53,7 @@ const services = [
       'Usporavanje počinje već pri ulasku. Masaža je tvoj trenutak za odmor, dublji udah i osjećaj da se tijelo ponovno vraća sebi.',
     treatments: ['Opuštajuće masaže', 'Masaža i piling', 'Calma ritual'],
     image: '/images/masaza.jpg',
-    alt: 'Opuštajuća masaža i piling tijela u salonu Calma Beauty',
+    alt: 'Nanošenje masažnog ulja tijekom tretmana tijela',
   },
   {
     number: '04',
@@ -63,7 +63,7 @@ const services = [
       'Precizan i pažljiv pristup uz fokus na udobnost kože. Dostupna je i depilacija prirodnom šećernom pastom, pogodna za osjetljivu kožu.',
     treatments: ['Šećerna pasta', 'Depilacija tijela', 'Njega osjetljive kože'],
     image: '/images/depilacija.jpg',
-    alt: 'Depilacija šećernom pastom u salonu Calma Beauty',
+    alt: 'Njega glatke kože nogu u salonu Calma Beauty',
   },
 ];
 
@@ -249,7 +249,7 @@ export default function Home() {
               <img
                 className="collage-main"
                 src="/images/piling.jpg"
-                alt="Pažljivo izvođenje tretmana kože lica"
+                alt="Nježna pjena tijekom čišćenja kože lica"
                 width="640"
                 height="640"
                 loading="lazy"
