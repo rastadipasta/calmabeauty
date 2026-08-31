@@ -94,10 +94,10 @@ const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'BeautySalon',
   name: 'Calma Beauty',
-  url: '/',
+  url: 'https://calma-beauty-zagreb.matkovimarko6.chatgpt.site',
   description:
     'Salon za žene u Zagrebu za tretmane lica i tijela, masaže i depilacije.',
-  image: '/images/hero-face.jpg',
+  image: 'https://calma-beauty-zagreb.matkovimarko6.chatgpt.site/images/hero-face.jpg',
   telephone: '+385916015254',
   address: {
     '@type': 'PostalAddress',

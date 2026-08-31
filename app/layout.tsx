@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Cormorant_Garamond, Manrope } from 'next/font/google';
 import './globals.css';
 
+const siteUrl = 'https://calma-beauty-zagreb.matkovimarko6.chatgpt.site';
+
 const display = Cormorant_Garamond({
   variable: '--font-display',
   subsets: ['latin', 'latin-ext'],
@@ -16,6 +18,7 @@ const sans = Manrope({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: 'Calma Beauty | Kozmetički salon u Zagrebu',
   description:
     'Calma Beauty je salon za žene u Zagrebu. Tretmani lica i tijela, masaže i depilacije u prostoru posvećenom vašem miru.',
@@ -43,12 +46,15 @@ export const metadata: Metadata = {
     title: 'Calma Beauty — mjesto gdje počinje tvoj mir.',
     description:
       'Tretmani lica i tijela, masaže i depilacije u mirnom salonu za žene u Zagrebu.',
+    url: siteUrl,
+    images: [{ url: '/og.png', width: 1200, height: 630, alt: 'Calma Beauty — mjesto gdje počinje tvoj mir.' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Calma Beauty — mjesto gdje počinje tvoj mir.',
     description:
       'Tretmani lica i tijela, masaže i depilacije u mirnom salonu za žene u Zagrebu.',
+    images: ['/og.png'],
   },
   icons: { icon: '/images/calma-logo.png', apple: '/images/calma-logo.png' },
 };
@@ -57,9 +63,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="hr">
       <head>
-        <link rel="canonical" href="/" />
-        <meta property="og:image" content="/og.png" />
-        <meta name="twitter:image" content="/og.png" />
+        <link rel="canonical" href={siteUrl} />
       </head>
       <body className={`${display.variable} ${sans.variable}`}>{children}</body>
     </html>
