@@ -8,6 +8,21 @@ import {
   Phone,
   Sparkles,
 } from 'lucide-react';
+import {
+  HeroAnchor,
+  HeroBlock,
+  HeroHeading,
+  HeroParagraph,
+  HeroVisual,
+  ImageReveal,
+  MagneticLink,
+  MotionMarquee,
+  PageEntrance,
+  PageLoader,
+  Reveal,
+  RevealArticle,
+  RevealFigure,
+} from './motion-elements';
 
 const services = [
   {
@@ -134,15 +149,14 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      <div className="loader" aria-hidden="true">
-        <img src="/images/calma-logo.png" alt="" />
-        <span />
-      </div>
+      <PageLoader />
+      <noscript><style>{'.loader{display:none!important}'}</style></noscript>
 
       <a className="skip-link" href="#intro">
         Preskoči na sadržaj
       </a>
 
+      <PageEntrance>
       <header className="site-header">
         <a href="#top" aria-label="Calma Beauty — početna">
           <BrandMark />
@@ -176,25 +190,26 @@ export default function Home() {
       <main id="top">
         <section className="hero" aria-labelledby="hero-title">
           <div className="hero-copy">
-            <p className="eyebrow reveal">Kozmetički salon · Zagreb</p>
-            <h1 id="hero-title" className="reveal delay-1">
+            <HeroParagraph className="eyebrow" delay={0}>Kozmetički salon · Zagreb</HeroParagraph>
+            <HeroHeading id="hero-title" delay={0.12}>
               Mjesto gdje
               <br /> počinje tvoj <em>mir.</em>
-            </h1>
-            <p className="hero-lede reveal delay-2">
+            </HeroHeading>
+            <HeroParagraph className="hero-lede" delay={0.22}>
               Vrijeme posvećeno tebi, uz pažljivo odabrane tretmane lica i tijela,
               masaže i nježnu depilaciju.
-            </p>
-            <div className="hero-actions reveal delay-3">
-              <a className="button button-dark magnetic" href="tel:+385916015254">
+            </HeroParagraph>
+            <HeroBlock className="hero-actions" delay={0.32}>
+              <MagneticLink className="button button-dark" href="tel:+385916015254">
                 Nazovi i rezerviraj <Phone aria-hidden="true" size={16} />
-              </a>
+              </MagneticLink>
               <a className="text-link" href="#usluge">
                 Istraži tretmane <ArrowDown aria-hidden="true" size={16} />
               </a>
-            </div>
-            <a
-              className="rating reveal delay-4"
+            </HeroBlock>
+            <HeroAnchor
+              className="rating"
+              delay={0.42}
               href="https://share.google/ekcDs0SmWT68ilKM0"
               target="_blank"
               rel="noreferrer"
@@ -203,37 +218,22 @@ export default function Home() {
               <span className="stars" aria-hidden="true">★★★★★</span>
               <strong>5,0</strong>
               <span>13 Google recenzija</span>
-            </a>
+            </HeroAnchor>
           </div>
 
-          <div className="hero-visual">
-            <img
-              src="/images/hero-face.jpg"
-              alt="Tretman njege lica u salonu Calma Beauty"
-              width="640"
-              height="640"
-              loading="eager"
-              fetchPriority="high"
-            />
-            <div className="hero-shade" />
-            <div className="hero-stamp" aria-hidden="true">
-              <span>CALMA</span>
-              <small>BEAUTY · ZAGREB</small>
-            </div>
-            <span className="image-caption">Njega koja vraća ravnotežu</span>
-          </div>
+          <HeroVisual />
         </section>
 
         <section className="intro section-shell" id="intro">
-          <div className="intro-heading view-reveal">
+          <Reveal className="intro-heading">
             <p className="section-index">01 — CALMA TRENUTAK</p>
             <p className="intro-quote">
               Ovdje ljepota nije žurba. Ona je osjećaj da si viđena, njegovana i
               ponovno svoja.
             </p>
-          </div>
+          </Reveal>
           <div className="intro-grid">
-            <div className="intro-copy view-reveal">
+            <Reveal className="intro-copy">
               <Sparkles aria-hidden="true" size={20} strokeWidth={1.4} />
               <p>
                 Calma Beauty je salon za žene u kojem svaki dolazak počinje
@@ -244,8 +244,8 @@ export default function Home() {
               <a className="text-link" href="tel:+385916015254">
                 Pronađimo tvoj Calma ritual <ArrowUpRight aria-hidden="true" size={16} />
               </a>
-            </div>
-            <div className="editorial-collage view-reveal">
+            </Reveal>
+            <ImageReveal className="editorial-collage">
               <img
                 className="collage-main"
                 src="/images/piling.jpg"
@@ -263,23 +263,23 @@ export default function Home() {
                 loading="lazy"
               />
               <span className="collage-note">Preciznost u svakom dodiru.</span>
-            </div>
+            </ImageReveal>
           </div>
         </section>
 
         <section className="services section-shell" id="usluge" aria-labelledby="services-title">
-          <div className="section-heading view-reveal">
+          <Reveal className="section-heading">
             <p className="section-index">02 — TRETMANI</p>
             <h2 id="services-title">Njega koja se prilagođava <em>tebi.</em></h2>
             <p>
               Četiri načina da zastaneš, poslušaš svoje tijelo i odabereš ono što ti
               danas najviše treba.
             </p>
-          </div>
+          </Reveal>
 
           <div className="service-list">
             {services.map((service) => (
-              <article className="service-card view-reveal" key={service.number}>
+              <RevealArticle className="service-card" key={service.number}>
                 <div className="service-number">{service.number}</div>
                 <div className="service-image-wrap">
                   <img
@@ -299,17 +299,17 @@ export default function Home() {
                       <li key={treatment}>{treatment}</li>
                     ))}
                   </ul>
-                  <a className="round-link" href="tel:+385916015254" aria-label={`Rezerviraj ${service.title}`}>
+                  <MagneticLink className="round-link" href="tel:+385916015254" aria-label={`Rezerviraj ${service.title}`}>
                     <ArrowUpRight aria-hidden="true" size={19} />
-                  </a>
+                  </MagneticLink>
                 </div>
-              </article>
+              </RevealArticle>
             ))}
           </div>
         </section>
 
         <section className="ritual" aria-labelledby="ritual-title">
-          <div className="ritual-image view-reveal">
+          <ImageReveal className="ritual-image">
             <img
               src="/images/masaza.jpg"
               alt="Calma ritual masaže i njege tijela"
@@ -317,25 +317,23 @@ export default function Home() {
               height="640"
               loading="lazy"
             />
-          </div>
-          <div className="ritual-copy view-reveal">
+          </ImageReveal>
+          <Reveal className="ritual-copy">
             <p className="section-index">CALMA RITUAL</p>
             <h2 id="ritual-title">Sat vremena samo za <em>tebe.</em></h2>
             <p>
               Utišaj obavijesti. Duboko udahni. Prepusti nam detalje, a sebi dopusti
               trenutak u kojem ne moraš biti nigdje drugdje.
             </p>
-            <a className="button button-light magnetic" href="tel:+385916015254">
+            <MagneticLink className="button button-light" href="tel:+385916015254">
               Rezerviraj svoj trenutak <Phone aria-hidden="true" size={16} />
-            </a>
-          </div>
-          <div className="marquee" aria-hidden="true">
-            <span>CALMA · NJEGA · MIR · RAVNOTEŽA · CALMA · NJEGA · MIR · RAVNOTEŽA ·</span>
-          </div>
+            </MagneticLink>
+          </Reveal>
+          <MotionMarquee />
         </section>
 
         <section className="reviews section-shell" id="recenzije" aria-labelledby="reviews-title">
-          <div className="reviews-lead view-reveal">
+          <Reveal className="reviews-lead">
             <p className="section-index">03 — RIJEČI KLIJENTICA</p>
             <h2 id="reviews-title">Povjerenje se osjeti u <em>detaljima.</em></h2>
             <a
@@ -348,10 +346,10 @@ export default function Home() {
               <strong>5,0 / 5</strong>
               <span>na temelju 13 Google recenzija</span>
             </a>
-          </div>
+          </Reveal>
           <div className="review-grid">
             {reviews.map((review, index) => (
-              <figure className="review-card view-reveal" key={review.initials}>
+              <RevealFigure className="review-card" delay={index * 0.1} key={review.initials}>
                 <span className="quote-mark" aria-hidden="true">“</span>
                 <blockquote>{review.text}</blockquote>
                 <figcaption>
@@ -359,18 +357,18 @@ export default function Home() {
                   <small>Google recenzija · 5/5</small>
                 </figcaption>
                 <span className="review-count">0{index + 1}</span>
-              </figure>
+              </RevealFigure>
             ))}
           </div>
         </section>
 
         <section className="faq section-shell" aria-labelledby="faq-title">
-          <div className="faq-heading view-reveal">
+          <Reveal className="faq-heading">
             <p className="section-index">04 — DOBRO JE ZNATI</p>
             <h2 id="faq-title">Prije tvog prvog <em>dolaska.</em></h2>
             <p>Ako odgovor nije ovdje, nazovi nas. Rado ćemo ti pomoći odabrati pravi termin i tretman.</p>
-          </div>
-          <div className="faq-list view-reveal">
+          </Reveal>
+          <Reveal className="faq-list">
             {faqs.map((faq, index) => (
               <details key={faq.question} name="calma-faq">
                 <summary>
@@ -381,18 +379,18 @@ export default function Home() {
                 <p>{faq.answer}</p>
               </details>
             ))}
-          </div>
+          </Reveal>
         </section>
 
         <section className="contact" id="kontakt" aria-labelledby="contact-title">
           <div className="contact-top section-shell">
-            <div className="contact-title view-reveal">
+            <Reveal className="contact-title">
               <p className="section-index">05 — POSJETI NAS</p>
               <h2 id="contact-title">Tvoj mir počinje <em>ovdje.</em></h2>
-            </div>
-            <div className="contact-grid">
+            </Reveal>
+            <Reveal className="contact-grid">
               <a
-                className="contact-item view-reveal"
+                className="contact-item"
                 href="https://share.google/ekcDs0SmWT68ilKM0"
                 target="_blank"
                 rel="noreferrer"
@@ -405,7 +403,7 @@ export default function Home() {
                 </span>
                 <ArrowUpRight aria-hidden="true" size={18} />
               </a>
-              <a className="contact-item view-reveal" href="tel:+385916015254">
+              <a className="contact-item" href="tel:+385916015254">
                 <Phone aria-hidden="true" size={20} strokeWidth={1.4} />
                 <span>
                   <small>Rezervacije</small>
@@ -413,7 +411,7 @@ export default function Home() {
                 </span>
                 <ArrowUpRight aria-hidden="true" size={18} />
               </a>
-              <div className="contact-item view-reveal">
+              <div className="contact-item">
                 <Clock3 aria-hidden="true" size={20} strokeWidth={1.4} />
                 <span>
                   <small>Radno vrijeme</small>
@@ -422,7 +420,7 @@ export default function Home() {
                 </span>
               </div>
               <a
-                className="contact-item view-reveal"
+                className="contact-item"
                 href="https://www.instagram.com/_calmabeauty_/"
                 target="_blank"
                 rel="noreferrer"
@@ -434,7 +432,7 @@ export default function Home() {
                 </span>
                 <ArrowUpRight aria-hidden="true" size={18} />
               </a>
-            </div>
+            </Reveal>
           </div>
 
           <footer>
@@ -453,6 +451,7 @@ export default function Home() {
       <a className="mobile-cta" href="tel:+385916015254">
         <Phone aria-hidden="true" size={16} /> Rezerviraj termin
       </a>
+      </PageEntrance>
     </>
   );
 }
