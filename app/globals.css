@@ -177,7 +177,7 @@ h1 em { color: var(--gold); font-weight: 400; }
 
 .ritual { position: relative; min-height: 880px; display: grid; grid-template-columns: 1fr 1fr; background: var(--espresso); color: white; overflow: hidden; }
 .ritual-image { position: relative; height: 100%; min-height: 800px; overflow: hidden; }
-.ritual-image img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.84) brightness(.76) contrast(1.03); transform: scale(1.02); }
+.ritual-image :is(img, video) { width: 100%; height: 100%; display: block; object-fit: cover; filter: saturate(.84) brightness(.76) contrast(1.03); transform: scale(1.02); }
 .ritual-copy { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: clamp(4rem, 7.5vw, 9rem); }
 .ritual-copy h2 { max-width: 40rem; }
 .ritual-copy p:not(.section-index) { max-width: 32rem; margin: 2rem 0 2.5rem; color: rgba(255,255,255,.7); line-height: 1.85; }

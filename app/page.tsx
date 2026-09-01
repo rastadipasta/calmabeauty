@@ -267,12 +267,18 @@ export default function Home() {
 
         <section className="ritual" aria-labelledby="ritual-title">
           <ImageReveal className="ritual-image image-noise">
-            <img
-              src="/images/masaza.jpg"
-              alt="Calma ritual masaže i njege tijela"
+            <video
+              src="/video/ulje.mp4"
+              poster="/images/masaza.jpg"
+              aria-label="Nanošenje ulja tijekom Calma rituala masaže"
               width="2055"
               height="3640"
-              loading="lazy"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              disablePictureInPicture
             />
           </ImageReveal>
           <Reveal className="ritual-copy">
