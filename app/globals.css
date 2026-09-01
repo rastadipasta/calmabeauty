@@ -174,15 +174,12 @@ h1 em { color: var(--gold); font-weight: 400; }
 .round-link { position: absolute; right: 0; bottom: 0; width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; transition: transform .4s var(--ease-luxe), background .4s, color .4s; }
 .round-link:hover { transform: rotate(45deg); background: var(--ink); color: white; }
 
-.ritual { position: relative; min-height: 950px; display: grid; grid-template-columns: 1fr 1fr; background: var(--espresso); color: white; overflow: hidden; }
-.ritual-image { position: relative; height: 100%; min-height: 850px; overflow: hidden; }
+.ritual { position: relative; min-height: 880px; display: grid; grid-template-columns: 1fr 1fr; background: var(--espresso); color: white; overflow: hidden; }
+.ritual-image { position: relative; height: 100%; min-height: 800px; overflow: hidden; }
 .ritual-image img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.84) brightness(.76) contrast(1.03); transform: scale(1.02); }
 .ritual-copy { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: clamp(4rem, 7.5vw, 9rem); }
 .ritual-copy h2 { max-width: 40rem; }
 .ritual-copy p:not(.section-index) { max-width: 32rem; margin: 2rem 0 2.5rem; color: rgba(255,255,255,.7); line-height: 1.85; }
-.marquee { position: absolute; left: 0; right: 0; bottom: 0; overflow: hidden; white-space: nowrap; border-top: 1px solid rgba(255,255,255,.2); padding: 1.2rem 0; }
-.marquee-track { display: flex; width: max-content; will-change: transform; }
-.marquee span { flex: none; display: inline-block; color: var(--gold-soft); font: italic 1.1rem var(--font-display); letter-spacing: .12em; }
 
 .image-noise { isolation: isolate; }
 .image-noise::after { content: ''; position: absolute; z-index: 3; inset: 0; pointer-events: none; opacity: .13; mix-blend-mode: soft-light; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='.72'/%3E%3C/svg%3E"); }
@@ -287,7 +284,7 @@ footer > small { grid-column: 1 / -1; align-self: end; color: rgba(255,255,255,.
   .service-copy { grid-column: 2; padding: 1rem 0 1.5rem; }
   .service-copy h3 { font-size: clamp(3.5rem, 14vw, 5.6rem); }
   .service-copy ul { padding-right: 3rem; }
-  .ritual { display: block; min-height: auto; padding-bottom: 74px; }
+  .ritual { display: block; min-height: auto; }
   .ritual-image { min-height: 58svh; height: 58svh; }
   .ritual-copy { padding: 4.5rem 1.25rem; }
   .ritual-copy h2 { font-size: clamp(3.8rem, 14vw, 5.8rem); }

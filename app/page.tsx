@@ -16,7 +16,6 @@ import {
   HorizontalIntro,
   ImageReveal,
   MagneticLink,
-  MotionMarquee,
   PageEntrance,
   PageLoader,
   Reveal,
@@ -287,7 +286,6 @@ export default function Home() {
               Rezerviraj svoj trenutak <Phone aria-hidden="true" size={16} />
             </MagneticLink>
           </Reveal>
-          <MotionMarquee />
         </section>
 
         <section className="reviews section-shell" id="recenzije" aria-labelledby="reviews-title">

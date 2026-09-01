@@ -305,20 +305,3 @@ export function MagneticLink({ children, className = '', ...props }: MagneticLin
     </motion.a>
   );
 }
-
-export function MotionMarquee() {
-  const reduceMotion = useReducedMotion();
-  const words = 'CALMA · NJEGA · MIR · RAVNOTEŽA · ';
-  return (
-    <div className="marquee" aria-hidden="true">
-      <motion.div
-        className="marquee-track"
-        animate={reduceMotion ? undefined : { x: ['0%', '-50%'] }}
-        transition={{ duration: 24, repeat: Infinity, ease: 'linear' }}
-      >
-        <span>{words.repeat(3)}</span>
-        <span>{words.repeat(3)}</span>
-      </motion.div>
-    </div>
-  );
-}
