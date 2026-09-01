@@ -202,8 +202,15 @@ export function HeroVisual() {
         transition={{ duration: 0.9, delay: reduceMotion ? 0 : 1.25, ease: luxeEase }}
       >
         <img src="/images/calma-wordmark.svg" alt="Calma" />
-        <small><span>BEAUTY ·</span><span> ZAGREB</span></small>
       </motion.div>
+      <motion.small
+        className="hero-wordmark-caption"
+        initial={reduceMotion ? false : { opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: reduceMotion ? 0 : 1.35, ease: luxeEase }}
+      >
+        <span>BEAUTY ·</span><span> ZAGREB</span>
+      </motion.small>
     </motion.div>
   );
 }

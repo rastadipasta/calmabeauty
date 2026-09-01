@@ -115,8 +115,8 @@ h1 em { color: var(--gold); font-weight: 400; }
 .hero-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(26,20,15,.2), transparent 42%, rgba(26,20,15,.28)); }
 .hero-wordmark { position: absolute; z-index: 2; top: 5.337%; left: -27.68%; width: 57.01%; color: var(--ink); }
 .hero-wordmark img { width: 100%; height: auto; }
-.hero-wordmark small { position: absolute; left: 48.46%; top: 62.75%; display: flex; transform: translateX(-50%); color: var(--ink); font-size: clamp(.65rem, .833vw, 1rem); line-height: .8; letter-spacing: .2332em; white-space: nowrap; }
-.hero-wordmark small span:last-child { color: white; }
+.hero-wordmark-caption { position: absolute; z-index: 2; left: 0; top: 23.2%; display: flex; transform: translateX(-50%); color: var(--ink); font-size: clamp(.65rem, .833vw, 1rem); line-height: .8; letter-spacing: .2332em; white-space: nowrap; }
+.hero-wordmark-caption span:last-child { color: white; }
 .hero-stamp { position: absolute; left: 0; right: 0; top: 49%; color: white; text-align: center; }
 .hero-stamp span { font-family: var(--font-display); font-size: clamp(2.5rem, 4.6vw, 5.3rem); line-height: 1; letter-spacing: .19em; text-shadow: 0 2px 18px rgba(0,0,0,.18); }
 .hero-stamp small { display: block; margin-top: .35rem; font-size: .53rem; letter-spacing: .44em; }
@@ -259,8 +259,10 @@ footer > small { grid-column: 1 / -1; align-self: end; color: rgba(255,255,255,.
   .rating { margin-top: 2rem; }
   .hero-stamp span { font-size: clamp(2.5rem, 14vw, 4rem); }
   .image-caption { font-size: .95rem; }
+  .hero-wordmark-block { display: none; }
   .hero-wordmark { top: 4%; left: 2%; width: 64%; }
-  .hero-wordmark small { margin-left: 28%; }
+  .hero-wordmark-caption { left: 34%; top: 20%; color: white; text-shadow: 0 1px 8px rgba(26,20,15,.22); }
+  .hero-wordmark-caption span:last-child { color: inherit; }
   .horizontal-intro { height: auto; }
   .horizontal-sticky { position: relative; height: auto; overflow: hidden; }
   .horizontal-track { width: auto; height: auto; padding: 5.5rem 1.25rem; transform: none !important; }
