@@ -56,7 +56,11 @@ export const metadata: Metadata = {
       'Tretmani lica i tijela, masaže i depilacije u mirnom salonu za žene u Zagrebu.',
     images: ['/og.png'],
   },
-  icons: { icon: '/images/calma-logo.png', apple: '/images/calma-logo.png' },
+  icons: {
+    icon: [{ url: '/favicon.png', type: 'image/png', sizes: '512x512' }],
+    shortcut: '/favicon.png',
+    apple: [{ url: '/favicon.png', type: 'image/png', sizes: '512x512' }],
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
