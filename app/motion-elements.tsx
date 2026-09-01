@@ -26,7 +26,7 @@ export function PageLoader() {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const timer = window.setTimeout(() => setVisible(false), reduceMotion ? 80 : 1180);
+    const timer = window.setTimeout(() => setVisible(false), reduceMotion ? 80 : 5200);
     return () => window.clearTimeout(timer);
   }, [reduceMotion]);
 
@@ -37,36 +37,30 @@ export function PageLoader() {
           className="loader"
           aria-hidden="true"
           initial={{ opacity: 1 }}
-          exit={reduceMotion ? { opacity: 0 } : { y: '-100%', opacity: 0.98 }}
-          transition={{ duration: reduceMotion ? 0.08 : 0.72, ease: luxeEase }}
+          exit={reduceMotion ? { opacity: 0 } : { opacity: 0 }}
+          transition={{ duration: reduceMotion ? 0.08 : 0.82, ease: luxeEase }}
         >
-          <motion.img
-            src="/images/calma-logo.png"
-            alt=""
-            initial={reduceMotion ? false : { opacity: 0, y: 18, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.72, ease: luxeEase }}
-          />
-          <motion.svg
-            className="loader-branch"
-            viewBox="0 0 210 42"
-            fill="none"
-            aria-hidden="true"
+          <motion.div
+            className="loader-video-wrap"
+            initial={reduceMotion ? false : { opacity: 0, scale: 1.025 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.9, ease: luxeEase }}
           >
-            <motion.path
-              d="M8 34C48 33 79 21 105 8M70 25c-2-11 2-17 12-21M92 14c9 1 16-2 20-10M48 31c-5-8-5-14 0-20M112 8c25 15 54 23 90 24M139 21c3-10 10-15 20-16M161 27c8-7 16-8 25-4"
-              stroke="currentColor"
-              strokeWidth="1.25"
-              strokeLinecap="round"
-              initial={reduceMotion ? false : { pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 1 }}
-              transition={{ duration: 0.9, ease: luxeEase, delay: 0.08 }}
+            <video
+              className="loader-video"
+              src="/video/calma-lotus-loader.mp4"
+              autoPlay
+              muted
+              playsInline
+              preload="auto"
+              onEnded={() => setVisible(false)}
+              onError={() => setVisible(false)}
             />
-          </motion.svg>
+          </motion.div>
           <motion.span
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
-            transition={{ duration: reduceMotion ? 0.05 : 1, ease: 'easeInOut' }}
+            transition={{ duration: reduceMotion ? 0.05 : 4, ease: 'linear' }}
           />
         </motion.div>
       ) : null}
