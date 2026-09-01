@@ -9,6 +9,7 @@ import {
   useSpring,
   useTransform,
 } from 'motion/react';
+import { ArrowUpRight, Sparkles } from 'lucide-react';
 import {
   type ComponentProps,
   type PropsWithChildren,
@@ -175,42 +176,88 @@ export function HeroVisual() {
   const reduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
   const imageY = useTransform(scrollYProgress, [0, 1], ['0%', '12%']);
-  const stampY = useTransform(scrollYProgress, [0, 1], ['-50%', '-26%']);
 
   return (
-    <motion.div
-      ref={ref}
-      className="hero-visual"
-      initial={reduceMotion ? false : { clipPath: 'inset(0 0 100% 0)' }}
-      animate={{ clipPath: 'inset(0 0 0% 0)' }}
-      transition={{ duration: 1.15, delay: reduceMotion ? 0 : 0.9, ease: luxeEase }}
-    >
-      <motion.img
-        src="/images/hero-face.jpg"
-        alt="Opuštena klijentica tijekom Calma Beauty rituala"
-        width="640"
-        height="640"
-        loading="eager"
-        fetchPriority="high"
-        style={{ y: reduceMotion ? 0 : imageY }}
-        initial={reduceMotion ? false : { scale: 1.1 }}
-        animate={{ scale: 1.035 }}
-        transition={{ duration: 1.6, delay: reduceMotion ? 0 : 0.9, ease: luxeEase }}
-      />
-      <div className="hero-shade" />
+    <motion.div ref={ref} className="hero-visual">
       <motion.div
-        className="hero-stamp"
-        aria-hidden="true"
-        style={{ y: reduceMotion ? '-50%' : stampY }}
-        initial={reduceMotion ? false : { opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: reduceMotion ? 0 : 1.4 }}
+        className="hero-image-mask"
+        initial={reduceMotion ? false : { clipPath: 'inset(0 0 100% 0)' }}
+        animate={{ clipPath: 'inset(0 0 0% 0)' }}
+        transition={{ duration: 1.15, delay: reduceMotion ? 0 : 0.9, ease: luxeEase }}
       >
-        <span>CALMA</span>
+        <motion.img
+          src="/images/hero-face.jpg"
+          alt="Opuštena klijentica tijekom Calma Beauty rituala"
+          width="640"
+          height="640"
+          loading="eager"
+          fetchPriority="high"
+          style={{ y: reduceMotion ? 0 : imageY }}
+          initial={reduceMotion ? false : { scale: 1.1 }}
+          animate={{ scale: 1.035 }}
+          transition={{ duration: 1.6, delay: reduceMotion ? 0 : 0.9, ease: luxeEase }}
+        />
+        <div className="hero-shade" />
+      </motion.div>
+      <motion.div
+        className="hero-wordmark"
+        initial={reduceMotion ? false : { opacity: 0, y: -18 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9, delay: reduceMotion ? 0 : 1.25, ease: luxeEase }}
+      >
+        <img src="/images/calma-wordmark.svg" alt="Calma" />
         <small>BEAUTY · ZAGREB</small>
       </motion.div>
-      <span className="image-caption">Njega koja vraća ravnotežu</span>
     </motion.div>
+  );
+}
+
+export function HorizontalIntro() {
+  const ref = useRef<HTMLElement>(null);
+  const reduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] });
+  const x = useTransform(scrollYProgress, [0, 1], ['0%', '-74.36%']);
+
+  return (
+    <section
+      className={`horizontal-intro${reduceMotion ? ' horizontal-intro-reduced' : ''}`}
+      id="intro"
+      ref={ref}
+      aria-labelledby="intro-title"
+    >
+      <div className="horizontal-sticky">
+        <motion.div className="horizontal-track" style={{ x: reduceMotion ? 0 : x }}>
+          <p className="horizontal-label">Tvoj Calma trenutak</p>
+
+          <h2 className="horizontal-quote" id="intro-title">
+            Ovdje ljepota nije žurba. Ona je osjećaj da si viđena, njegovana i ponovno svoja.
+          </h2>
+
+          <div className="horizontal-story">
+            <Sparkles aria-hidden="true" size={20} strokeWidth={1.4} />
+            <p>
+              Calma Beauty je salon za žene u kojem svaki dolazak počinje razgovorom,
+              a svaki tretman prati miran, individualan pristup. Ne tražimo prečace —
+              biramo ono što tvojoj koži i tijelu u tom trenutku stvarno treba.
+            </p>
+            <a className="text-link" href="tel:+385916015254">
+              Pronađimo tvoj Calma ritual <ArrowUpRight aria-hidden="true" size={16} />
+            </a>
+          </div>
+
+          <div className="horizontal-photo">
+            <span>Preciznost u svakom dodiru.</span>
+            <img
+              src="/images/piling.jpg"
+              alt="Nježna pjena tijekom čišćenja kože lica"
+              width="1200"
+              height="1500"
+              loading="lazy"
+            />
+          </div>
+        </motion.div>
+      </div>
+    </section>
   );
 }
 

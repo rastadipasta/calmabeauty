@@ -6,7 +6,6 @@ import {
   MapPin,
   Menu,
   Phone,
-  Sparkles,
 } from 'lucide-react';
 import {
   HeroAnchor,
@@ -14,6 +13,7 @@ import {
   HeroHeading,
   HeroParagraph,
   HeroVisual,
+  HorizontalIntro,
   ImageReveal,
   MagneticLink,
   MotionMarquee,
@@ -190,7 +190,6 @@ export default function Home() {
       <main id="top">
         <section className="hero" aria-labelledby="hero-title">
           <div className="hero-copy">
-            <HeroParagraph className="eyebrow" delay={0}>Kozmetički salon · Zagreb</HeroParagraph>
             <HeroHeading id="hero-title" delay={0.12}>
               Mjesto gdje
               <br /> počinje tvoj <em>mir.</em>
@@ -224,52 +223,11 @@ export default function Home() {
           <HeroVisual />
         </section>
 
-        <section className="intro section-shell" id="intro">
-          <Reveal className="intro-heading">
-            <p className="section-index">01 — CALMA TRENUTAK</p>
-            <p className="intro-quote">
-              Ovdje ljepota nije žurba. Ona je osjećaj da si viđena, njegovana i
-              ponovno svoja.
-            </p>
-          </Reveal>
-          <div className="intro-grid">
-            <Reveal className="intro-copy">
-              <Sparkles aria-hidden="true" size={20} strokeWidth={1.4} />
-              <p>
-                Calma Beauty je salon za žene u kojem svaki dolazak počinje
-                razgovorom, a svaki tretman prati miran, individualan pristup.
-                Ne tražimo prečace — biramo ono što tvojoj koži i tijelu u tom
-                trenutku stvarno treba.
-              </p>
-              <a className="text-link" href="tel:+385916015254">
-                Pronađimo tvoj Calma ritual <ArrowUpRight aria-hidden="true" size={16} />
-              </a>
-            </Reveal>
-            <ImageReveal className="editorial-collage">
-              <img
-                className="collage-main"
-                src="/images/piling.jpg"
-                alt="Nježna pjena tijekom čišćenja kože lica"
-                width="640"
-                height="640"
-                loading="lazy"
-              />
-              <img
-                className="collage-detail"
-                src="/images/calma-logo.png"
-                alt="Calma Beauty logotip"
-                width="769"
-                height="489"
-                loading="lazy"
-              />
-              <span className="collage-note">Preciznost u svakom dodiru.</span>
-            </ImageReveal>
-          </div>
-        </section>
+        <HorizontalIntro />
 
         <section className="services section-shell" id="usluge" aria-labelledby="services-title">
           <Reveal className="section-heading">
-            <p className="section-index">02 — TRETMANI</p>
+            <p className="section-index">TRETMANI</p>
             <h2 id="services-title">Njega koja se prilagođava <em>tebi.</em></h2>
             <p>
               Četiri načina da zastaneš, poslušaš svoje tijelo i odabereš ono što ti
