@@ -108,14 +108,14 @@ h1 em { color: var(--gold); font-weight: 400; }
 .hero-visual { position: relative; min-height: calc(100svh - 82px); overflow: visible; background: #544b43; }
 .hero-image-mask { position: absolute; inset: 0; overflow: hidden; }
 .hero-image-mask > img { width: 100%; height: 157.4%; object-fit: cover; object-position: 50% 0; filter: brightness(.93) contrast(1.08) saturate(.98); }
-.hero-wordmark-block { position: absolute; z-index: 1; left: 0; background: rgba(250,247,242,.62); mix-blend-mode: luminosity; }
+.hero-wordmark-block { position: absolute; z-index: 1; left: 48.55%; background: rgba(250,247,242,.62); mix-blend-mode: luminosity; }
 .hero-wordmark-block::after { content: ''; position: absolute; inset: 0; background: rgba(58,46,26,.26); mix-blend-mode: luminosity; }
-.hero-wordmark-block-large { top: 9.586%; width: 30.393%; height: 11.22%; }
-.hero-wordmark-block-small { top: 21.57%; width: 11.796%; height: 4.575%; }
+.hero-wordmark-block-large { top: 29.85%; width: 53.31%; height: 78.82%; }
+.hero-wordmark-block-small { top: 114%; width: 20.69%; height: 32.14%; }
 .hero-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(26,20,15,.2), transparent 42%, rgba(26,20,15,.28)); }
 .hero-wordmark { position: absolute; z-index: 2; top: 5.337%; left: -27.68%; width: 57.01%; color: var(--ink); }
-.hero-wordmark img { width: 100%; height: auto; }
-.hero-wordmark-caption { position: absolute; z-index: 2; left: 0; top: 23.2%; display: flex; transform: translateX(-50%); color: var(--ink); font-size: clamp(.65rem, .833vw, 1rem); line-height: .8; letter-spacing: .2332em; white-space: nowrap; }
+.hero-wordmark img { position: relative; z-index: 2; width: 100%; height: auto; }
+.hero-wordmark-caption { position: absolute; z-index: 3; left: 48.55%; top: 126%; display: flex; transform: translateX(-50%); color: var(--ink); font-size: clamp(.65rem, .833vw, 1rem); line-height: .8; letter-spacing: .2332em; white-space: nowrap; }
 .hero-wordmark-caption span:last-child { color: white; }
 .hero-stamp { position: absolute; left: 0; right: 0; top: 49%; color: white; text-align: center; }
 .hero-stamp span { font-family: var(--font-display); font-size: clamp(2.5rem, 4.6vw, 5.3rem); line-height: 1; letter-spacing: .19em; text-shadow: 0 2px 18px rgba(0,0,0,.18); }
@@ -261,7 +261,7 @@ footer > small { grid-column: 1 / -1; align-self: end; color: rgba(255,255,255,.
   .image-caption { font-size: .95rem; }
   .hero-wordmark-block { display: none; }
   .hero-wordmark { top: 4%; left: 2%; width: 64%; }
-  .hero-wordmark-caption { left: 34%; top: 20%; color: white; text-shadow: 0 1px 8px rgba(26,20,15,.22); }
+  .hero-wordmark-caption { left: 50%; top: 110%; color: white; text-shadow: 0 1px 8px rgba(26,20,15,.22); }
   .hero-wordmark-caption span:last-child { color: inherit; }
   .horizontal-intro { height: auto; }
   .horizontal-sticky { position: relative; height: auto; overflow: hidden; }
