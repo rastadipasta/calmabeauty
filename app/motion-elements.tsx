@@ -191,6 +191,8 @@ export function HeroVisual() {
           animate={{ scale: 1.035 }}
           transition={{ duration: 1.6, delay: reduceMotion ? 0 : 0.9, ease: luxeEase }}
         />
+        <div className="hero-wordmark-block hero-wordmark-block-large" />
+        <div className="hero-wordmark-block hero-wordmark-block-small" />
         <div className="hero-shade" />
       </motion.div>
       <motion.div
@@ -200,7 +202,7 @@ export function HeroVisual() {
         transition={{ duration: 0.9, delay: reduceMotion ? 0 : 1.25, ease: luxeEase }}
       >
         <img src="/images/calma-wordmark.svg" alt="Calma" />
-        <small>BEAUTY · ZAGREB</small>
+        <small><span>BEAUTY ·</span><span> ZAGREB</span></small>
       </motion.div>
     </motion.div>
   );
