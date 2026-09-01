@@ -26,7 +26,7 @@ export function PageLoader() {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const timer = window.setTimeout(() => setVisible(false), reduceMotion ? 80 : 5200);
+    const timer = window.setTimeout(() => setVisible(false), reduceMotion ? 80 : 3200);
     return () => window.clearTimeout(timer);
   }, [reduceMotion]);
 
@@ -60,7 +60,7 @@ export function PageLoader() {
           <motion.span
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
-            transition={{ duration: reduceMotion ? 0.05 : 4, ease: 'linear' }}
+            transition={{ duration: reduceMotion ? 0.05 : 2, ease: 'linear' }}
           />
         </motion.div>
       ) : null}
