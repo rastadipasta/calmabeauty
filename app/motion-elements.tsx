@@ -214,7 +214,13 @@ export function HorizontalIntro() {
   const ref = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] });
-  const x = useTransform(scrollYProgress, [0, 1], ['0%', '-74.36%']);
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    mass: 0.45,
+    restDelta: 0.001,
+  });
+  const x = useTransform(smoothProgress, [0, 1], ['0%', '-74.36%']);
 
   return (
     <section
