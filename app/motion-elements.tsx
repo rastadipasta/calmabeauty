@@ -174,7 +174,7 @@ export function HeroVisual() {
   return (
     <motion.div ref={ref} className="hero-visual">
       <motion.div
-        className="hero-image-mask"
+        className="hero-image-mask image-noise"
         initial={reduceMotion ? false : { clipPath: 'inset(0 0 100% 0)' }}
         animate={{ clipPath: 'inset(0 0 0% 0)' }}
         transition={{ duration: 1.15, delay: reduceMotion ? 0 : 0.9, ease: luxeEase }}
@@ -182,8 +182,8 @@ export function HeroVisual() {
         <motion.img
           src="/images/hero-face.jpg"
           alt="Opuštena klijentica tijekom Calma Beauty rituala"
-          width="640"
-          height="640"
+          width="1800"
+          height="3200"
           loading="eager"
           fetchPriority="high"
           style={{ y: reduceMotion ? 0 : imageY }}

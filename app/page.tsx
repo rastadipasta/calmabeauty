@@ -267,12 +267,12 @@ export default function Home() {
         </section>
 
         <section className="ritual" aria-labelledby="ritual-title">
-          <ImageReveal className="ritual-image">
+          <ImageReveal className="ritual-image image-noise">
             <img
               src="/images/masaza.jpg"
               alt="Calma ritual masaže i njege tijela"
-              width="640"
-              height="640"
+              width="2055"
+              height="3640"
               loading="lazy"
             />
           </ImageReveal>
