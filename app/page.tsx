@@ -396,7 +396,10 @@ export default function Home() {
               <a href="#recenzije">Recenzije</a>
               <a href="#kontakt">Kontakt</a>
             </div>
-            <small>© 2026 Calma Beauty · Zagreb</small>
+            <small className="footer-meta">
+              <span>CALMA BEAUTY, OBRT ZA USLUGE, VL. MARINA NJEGAČ, ZAGREB, DANKOVEČKA ULICA 12</span>
+              <span>© 2026 Calma Beauty · Zagreb</span>
+            </small>
           </footer>
         </section>
       </main>
