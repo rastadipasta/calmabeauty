@@ -276,19 +276,6 @@ export function HeroVisual() {
         />
         <div className="hero-shade" />
       </motion.div>
-      <motion.div
-        className="hero-wordmark"
-        initial={reduceMotion ? false : { opacity: 0, y: -18 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9, delay: reduceMotion ? 0 : 1.25, ease: luxeEase }}
-      >
-        <div className="hero-wordmark-block hero-wordmark-block-large" />
-        <div className="hero-wordmark-block hero-wordmark-block-small" />
-        <img src="/images/calma-wordmark.svg" alt="Calma" />
-        <small className="hero-wordmark-caption">
-          <span>BEAUTY ·</span><span> ZAGREB</span>
-        </small>
-      </motion.div>
     </motion.div>
   );
 }
