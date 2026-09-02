@@ -249,7 +249,10 @@ footer > small { grid-column: 1 / -1; align-self: end; color: rgba(255,255,255,.
   .mobile-menu[open] nav { position: fixed; inset: 72px 0 auto; display: flex; flex-direction: column; background: var(--paper); border-top: 1px solid var(--line); box-shadow: 0 25px 60px rgba(35,28,22,.13); }
   .mobile-menu nav a { min-height: 58px; display: flex; align-items: center; padding-inline: 1.25rem; border-bottom: 1px solid var(--line); font-family: var(--font-display); font-size: 1.35rem; }
   .hero { display: flex; flex-direction: column-reverse; padding-top: 72px; }
-  .hero-visual { min-height: 58svh; }
+  .hero-visual { min-height: clamp(390px, 105vw, 480px); height: clamp(390px, 105vw, 480px); }
+  .hero-image-mask > img { height: 148%; object-position: 50% 0; filter: brightness(.9) contrast(1.12) saturate(.98); }
+  .hero-image-mask.image-noise::after { opacity: .2; mix-blend-mode: soft-light; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.3' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E"); }
+  .hero-shade { background: rgba(33,27,22,.03); }
   .hero-copy { padding: 3.1rem 1.25rem 2.6rem; }
   h1 { font-size: clamp(3.8rem, 17vw, 6.2rem); }
   .hero-actions { flex-direction: column; align-items: stretch; width: 100%; }
@@ -257,10 +260,13 @@ footer > small { grid-column: 1 / -1; align-self: end; color: rgba(255,255,255,.
   .rating { margin-top: 2rem; }
   .hero-stamp span { font-size: clamp(2.5rem, 14vw, 4rem); }
   .image-caption { font-size: .95rem; }
-  .hero-wordmark-block { display: none; }
-  .hero-wordmark { top: 4%; left: 2%; width: 64%; }
-  .hero-wordmark-caption { left: 50%; top: 110%; color: white; text-shadow: 0 1px 8px rgba(26,20,15,.22); }
-  .hero-wordmark-caption span:last-child { color: inherit; }
+  .hero-wordmark { z-index: 4; inset: auto 0 0; width: 100%; height: 25.2%; display: grid; place-items: center; }
+  .hero-wordmark-block { display: block; inset: 0; width: 100%; height: 100%; background: rgba(243,238,231,.62); mix-blend-mode: luminosity; }
+  .hero-wordmark-block::after { background: rgba(33,27,22,.13); mix-blend-mode: luminosity; }
+  .hero-wordmark-block-small { display: none; }
+  .hero-wordmark img { width: 64%; margin-top: -.7rem; }
+  .hero-wordmark-caption { left: 50%; top: auto; bottom: 9%; color: var(--ink); font-size: .56rem; letter-spacing: .24em; text-shadow: none; }
+  .hero-wordmark-caption span:last-child { color: var(--ink); }
   .horizontal-intro { height: auto; }
   .horizontal-sticky { position: relative; height: auto; overflow: hidden; }
   .horizontal-track { width: auto; height: auto; padding: 5.5rem 1.25rem; transform: none !important; }
@@ -306,7 +312,6 @@ footer > small { grid-column: 1 / -1; align-self: end; color: rgba(255,255,255,.
 }
 
 @media (max-width: 420px) {
-  .hero-visual { min-height: 52svh; }
   .hero-copy { padding-top: 2.5rem; }
   .editorial-collage { min-height: 420px; }
   .collage-main { height: 400px; }
