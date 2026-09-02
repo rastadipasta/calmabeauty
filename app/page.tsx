@@ -7,6 +7,7 @@ import {
   Phone,
 } from 'lucide-react';
 import {
+  BackToTop,
   HeroAnchor,
   HeroBlock,
   HeroHeading,
@@ -403,6 +404,7 @@ export default function Home() {
       <a className="mobile-cta" href="tel:+385916015254">
         <Phone aria-hidden="true" size={16} /> Rezerviraj termin
       </a>
+      <BackToTop />
       </PageEntrance>
     </>
   );

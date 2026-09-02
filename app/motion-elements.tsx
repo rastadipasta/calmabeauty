@@ -9,7 +9,7 @@ import {
   useSpring,
   useTransform,
 } from 'motion/react';
-import { ArrowUpRight, Sparkles } from 'lucide-react';
+import { ArrowUp, ArrowUpRight, Sparkles } from 'lucide-react';
 import {
   type ComponentProps,
   type PropsWithChildren,
@@ -124,6 +124,43 @@ export function MobileMenu() {
         ) : null}
       </AnimatePresence>
     </div>
+  );
+}
+
+export function BackToTop() {
+  const [visible, setVisible] = useState(false);
+  const reduceMotion = useReducedMotion();
+
+  useEffect(() => {
+    const updateVisibility = () => setVisible(window.scrollY > 720);
+    updateVisibility();
+    window.addEventListener('scroll', updateVisibility, { passive: true });
+    return () => window.removeEventListener('scroll', updateVisibility);
+  }, []);
+
+  return (
+    <AnimatePresence>
+      {visible ? (
+        <motion.a
+          className="back-to-top"
+          href="#top"
+          aria-label="Povratak na vrh stranice"
+          initial={reduceMotion ? false : { opacity: 0, y: 10, scale: 0.92 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 8, scale: 0.94 }}
+          transition={{ duration: reduceMotion ? 0 : 0.38, ease: luxeEase }}
+          whileHover={reduceMotion ? undefined : { y: -3 }}
+          whileTap={reduceMotion ? undefined : { scale: 0.93 }}
+          onClick={(event) => {
+            if (reduceMotion) return;
+            event.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+        >
+          <ArrowUp aria-hidden="true" size={17} strokeWidth={1.5} />
+        </motion.a>
+      ) : null}
+    </AnimatePresence>
   );
 }
 
