@@ -81,6 +81,52 @@ export function PageEntrance({ children }: PropsWithChildren) {
   );
 }
 
+export function MobileMenu() {
+  const [open, setOpen] = useState(false);
+  const reduceMotion = useReducedMotion();
+  const iconTransition = reduceMotion
+    ? { duration: 0 }
+    : { type: 'spring' as const, stiffness: 360, damping: 27, mass: 0.55 };
+
+  return (
+    <div className={`mobile-menu${open ? ' is-open' : ''}`}>
+      <button
+        className="mobile-menu-toggle"
+        type="button"
+        aria-label={open ? 'Zatvori izbornik' : 'Otvori izbornik'}
+        aria-expanded={open}
+        aria-controls="mobile-navigation"
+        onClick={() => setOpen((current) => !current)}
+      >
+        <span className="mobile-menu-icon" aria-hidden="true">
+          <motion.span animate={{ y: open ? 0 : -6, rotate: open ? 45 : 0 }} transition={iconTransition} />
+          <motion.span animate={{ opacity: open ? 0 : 1, scaleX: open ? 0 : 1 }} transition={iconTransition} />
+          <motion.span animate={{ y: open ? 0 : 6, rotate: open ? -45 : 0 }} transition={iconTransition} />
+        </span>
+      </button>
+
+      <AnimatePresence>
+        {open ? (
+          <motion.nav
+            className="mobile-menu-nav"
+            id="mobile-navigation"
+            aria-label="Mobilna navigacija"
+            initial={reduceMotion ? false : { opacity: 0, y: -12, clipPath: 'inset(0 0 100% 0)' }}
+            animate={{ opacity: 1, y: 0, clipPath: 'inset(0 0 0% 0)' }}
+            exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -8, clipPath: 'inset(0 0 100% 0)' }}
+            transition={{ duration: reduceMotion ? 0 : 0.42, ease: luxeEase }}
+          >
+            <a href="#intro" onClick={() => setOpen(false)}>O nama</a>
+            <a href="#usluge" onClick={() => setOpen(false)}>Tretmani</a>
+            <a href="#recenzije" onClick={() => setOpen(false)}>Recenzije</a>
+            <a href="#kontakt" onClick={() => setOpen(false)}>Kontakt</a>
+          </motion.nav>
+        ) : null}
+      </AnimatePresence>
+    </div>
+  );
+}
+
 export function HeroReveal({ children, delay = 0, className }: PropsWithChildren<{ delay?: number; className?: string }>) {
   const reduceMotion = useReducedMotion();
   return (

@@ -4,7 +4,6 @@ import {
   Camera,
   Clock3,
   MapPin,
-  Menu,
   Phone,
 } from 'lucide-react';
 import {
@@ -16,6 +15,7 @@ import {
   HorizontalIntro,
   ImageReveal,
   MagneticLink,
+  MobileMenu,
   PageEntrance,
   PageLoader,
   Reveal,
@@ -173,17 +173,7 @@ export default function Home() {
           <span>Rezerviraj termin</span>
         </a>
 
-        <details className="mobile-menu">
-          <summary aria-label="Otvori izbornik">
-            <Menu aria-hidden="true" size={22} />
-          </summary>
-          <nav aria-label="Mobilna navigacija">
-            <a href="#intro">O nama</a>
-            <a href="#usluge">Tretmani</a>
-            <a href="#recenzije">Recenzije</a>
-            <a href="#kontakt">Kontakt</a>
-          </nav>
-        </details>
+        <MobileMenu />
       </header>
 
       <main id="top">
