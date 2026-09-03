@@ -254,6 +254,7 @@ footer > small { grid-column: 1 / -1; align-self: end; color: rgba(255,255,255,.
 @media (max-width: 800px) {
   html { scroll-padding-top: 72px; }
   body { padding-bottom: 64px; }
+  .loader-video-wrap { width: 145vw; max-width: none; }
   .site-header { height: 72px; grid-template-columns: 1fr auto; padding-inline: 1.15rem; }
   .desktop-nav, .header-cta { display: none; }
   .mobile-menu { display: block; justify-self: end; }
