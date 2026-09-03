@@ -287,7 +287,7 @@ export default function Home() {
 
         <section className="reviews section-shell" id="recenzije" aria-labelledby="reviews-title">
           <Reveal className="reviews-lead">
-            <p className="section-index">03 — RIJEČI KLIJENTICA</p>
+            <p className="section-index">RIJEČI KLIJENTICA</p>
             <h2 id="reviews-title">Povjerenje se osjeti u <em>detaljima.</em></h2>
             <a
               className="rating rating-large"
@@ -317,7 +317,7 @@ export default function Home() {
 
         <section className="faq section-shell" aria-labelledby="faq-title">
           <Reveal className="faq-heading">
-            <p className="section-index">04 — DOBRO JE ZNATI</p>
+            <p className="section-index">DOBRO JE ZNATI</p>
             <h2 id="faq-title">Prije tvog prvog <em>dolaska.</em></h2>
             <p>Ako odgovor nije ovdje, nazovi nas. Rado ćemo ti pomoći odabrati pravi termin i tretman.</p>
           </Reveal>
@@ -338,7 +338,7 @@ export default function Home() {
         <section className="contact" id="kontakt" aria-labelledby="contact-title">
           <div className="contact-top section-shell">
             <Reveal className="contact-title">
-              <p className="section-index">05 — POSJETI NAS</p>
+              <p className="section-index">POSJETI NAS</p>
               <h2 id="contact-title">Tvoj mir počinje <em>ovdje.</em></h2>
             </Reveal>
             <Reveal className="contact-grid">
