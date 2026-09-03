@@ -2,7 +2,15 @@ import type { Metadata } from 'next';
 import { Cormorant_Garamond, Manrope } from 'next/font/google';
 import './globals.css';
 
-const siteUrl = 'https://calma-beauty-zagreb.matkovimarko6.chatgpt.site';
+const deploymentHost =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  process.env.VERCEL_PROJECT_PRODUCTION_URL ??
+  process.env.VERCEL_URL ??
+  'calma-beauty-zagreb.matkovimarko6.chatgpt.site';
+
+const siteUrl = deploymentHost.startsWith('http')
+  ? deploymentHost
+  : `https://${deploymentHost}`;
 
 const display = Cormorant_Garamond({
   variable: '--font-display',
