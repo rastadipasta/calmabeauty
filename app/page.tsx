@@ -344,9 +344,10 @@ export default function Home() {
             <Reveal className="contact-grid">
               <a
                 className="contact-item"
-                href="https://share.google/ekcDs0SmWT68ilKM0"
+                href="https://www.google.com/maps/dir/?api=1&destination=Dankove%C4%8Dka%20ulica%2012%2C%2010000%20Zagreb&travelmode=driving&dir_action=navigate"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Pokreni navigaciju do salona Calma Beauty, Dankovečka ulica 12, Zagreb"
               >
                 <MapPin aria-hidden="true" size={20} strokeWidth={1.4} />
                 <span>
