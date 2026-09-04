@@ -26,7 +26,7 @@ export function PageLoader() {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const timer = window.setTimeout(() => setVisible(false), reduceMotion ? 80 : 3200);
+    const timer = window.setTimeout(() => setVisible(false), reduceMotion ? 80 : 3700);
     return () => window.clearTimeout(timer);
   }, [reduceMotion]);
 
@@ -53,7 +53,9 @@ export function PageLoader() {
               muted
               playsInline
               preload="auto"
-              onEnded={() => setVisible(false)}
+              onEnded={() =>
+                window.setTimeout(() => setVisible(false), reduceMotion ? 0 : 500)
+              }
               onError={() => setVisible(false)}
             />
           </motion.div>
