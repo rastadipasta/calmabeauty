@@ -4,6 +4,7 @@ import { useEffect, useId, useRef, useState } from 'react';
 import { ChevronDown, ArrowUpRight } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { services } from './treatments';
+import styles from './treatment-menu.module.css';
 
 export function TreatmentMenu({ onNavigate }: { onNavigate?: () => void }) {
   const [open, setOpen] = useState(false);
@@ -22,7 +23,7 @@ export function TreatmentMenu({ onNavigate }: { onNavigate?: () => void }) {
   }, [open]);
 
   return (
-    <div className="treatment-menu" ref={root}
+    <div className={styles.root} ref={root}
       onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setOpen(false); }}
       onKeyDown={(event) => {
         if (event.key === 'Escape' && open) {
@@ -31,11 +32,11 @@ export function TreatmentMenu({ onNavigate }: { onNavigate?: () => void }) {
           trigger.current?.focus();
         }
       }}>
-      <button className="treatment-menu-trigger" type="button" ref={trigger}
+      <button className={styles.trigger} type="button" ref={trigger}
         aria-expanded={open} aria-controls={id} onClick={() => setOpen(!open)}>
         Tretmani <ChevronDown size={13} aria-hidden="true" />
       </button>
-      <div className="treatment-menu-panel" id={id} hidden={!open}>
+      <div className={styles.panel} id={id} hidden={!open}>
         {services.map((service) => (
           <a key={service.slug} href={`/tretmani/${service.slug}`}
             aria-current={pathname === `/tretmani/${service.slug}` ? 'page' : undefined}

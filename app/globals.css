@@ -381,27 +381,6 @@ footer > small { grid-column: 1 / -1; align-self: end; color: rgba(255,255,255,.
   .treatment-footer { flex-direction: column; text-align: center; }
 }
 
-/* Navigation treatment picker */
-.treatment-menu { position: relative; }
-.treatment-menu-trigger { display: flex; align-items: center; gap: .45rem; min-height: 44px; padding: 0; border: 0; background: transparent; color: inherit; font: inherit; text-transform: inherit; letter-spacing: inherit; cursor: pointer; }
-.treatment-menu-trigger svg { transition: transform .2s ease; }
-.treatment-menu-trigger[aria-expanded='true'] svg { transform: rotate(180deg); }
-.treatment-menu-trigger:hover, .treatment-menu-trigger[aria-expanded='true'] { color: var(--gold); }
-.treatment-menu-panel { position: absolute; top: calc(100% + 8px); left: -1.25rem; width: 260px; padding: .5rem 1.25rem; background: var(--paper); border: 1px solid var(--line); box-shadow: 0 16px 35px rgba(35,28,22,.12); }
-.treatment-menu-panel[hidden] { display: none; }
-.desktop-nav .treatment-menu-panel a { display: flex; justify-content: space-between; gap: 1rem; min-height: 52px; font-size: .67rem; letter-spacing: .08em; border-bottom: 1px solid var(--line); }
-.desktop-nav .treatment-menu-panel a:last-child { border-bottom: 0; }
-.treatment-menu-panel a[aria-current='page'], .treatment-menu-panel a:hover { color: var(--gold); }
-@media (max-width: 800px) {
-  .mobile-menu-nav { max-height: calc(100dvh - 72px); overflow-y: auto; }
-  .mobile-menu-nav .treatment-menu-trigger { width: 100%; justify-content: space-between; min-height: 58px; padding-inline: 1.25rem; border-bottom: 1px solid var(--line); font-family: var(--font-display); font-size: 1.35rem; }
-  .mobile-menu-nav .treatment-menu-panel { position: static; width: 100%; padding: 0; box-shadow: none; border: 0; background: var(--ivory); }
-  .mobile-menu-nav .treatment-menu-panel a { justify-content: space-between; padding-inline: 2rem 1.25rem; min-height: 50px; font-size: 1.15rem; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .treatment-menu-trigger svg { transition: none; }
-}
-
 /* The intro slides over the stationary landing hero. */
 .hero-scroll-scene { position: relative; isolation: isolate; }
 .hero-pinned { position: sticky; top: min(0px, calc(100svh - var(--hero-height, 100svh))); z-index: 0; }
