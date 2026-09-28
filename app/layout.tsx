@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Cormorant_Garamond, Manrope } from 'next/font/google';
 import './globals.css';
+import { PageTransition } from './page-transition';
 
 const deploymentHost =
   process.env.NEXT_PUBLIC_SITE_URL ??
@@ -30,6 +31,7 @@ export const metadata: Metadata = {
   title: 'Calma Beauty | Kozmetički salon u Zagrebu',
   description:
     'Calma Beauty je salon za žene u Zagrebu. Tretmani lica i tijela, masaže i depilacije u prostoru posvećenom vašem miru.',
+  alternates: { canonical: '/' },
   keywords: [
     'kozmetički salon Zagreb',
     'tretmani lica Zagreb',
@@ -74,10 +76,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="hr">
-      <head>
-        <link rel="canonical" href={siteUrl} />
-      </head>
-      <body className={`${display.variable} ${sans.variable}`}>{children}</body>
+      <body className={`${display.variable} ${sans.variable}`}><PageTransition>{children}</PageTransition></body>
     </html>
   );
 }

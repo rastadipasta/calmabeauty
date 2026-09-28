@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import {
   BackToTop,
+  ContactReveal,
   HeroAnchor,
   HeroBlock,
   HeroHeading,
@@ -19,53 +20,14 @@ import {
   MobileMenu,
   PageEntrance,
   PageLoader,
+  PinnedHero,
   Reveal,
   RevealArticle,
   RevealFigure,
 } from './motion-elements';
 
-const services = [
-  {
-    number: '01',
-    title: 'Tretmani lica',
-    subtitle: 'Njega koja sluša tvoju kožu',
-    description:
-      'Od dubinskog čišćenja i hidratacije do pažljivo odabranih pilinga — tretman prilagođavamo stanju i potrebama tvoje kože.',
-    treatments: ['HydraFacial', 'Kemijski pilinzi', 'Individualna njega'],
-    image: '/images/hydrafacial.jpg',
-    alt: 'Precizan tretman njege lica u salonu Calma Beauty',
-  },
-  {
-    number: '02',
-    title: 'Tretmani tijela',
-    subtitle: 'Vrijeme za lakoću i ravnotežu',
-    description:
-      'Rituali njege osmišljeni su kao predah za tijelo — uz stručan pristup, ugodnu atmosferu i pažnju posvećenu svakom detalju.',
-    treatments: ['Njega tijela', 'Piling tijela', 'Tretmani po dogovoru'],
-    image: '/images/tijelo.jpg',
-    alt: 'Klijentica tijekom opuštajućeg Calma Beauty rituala',
-  },
-  {
-    number: '03',
-    title: 'Masaže',
-    subtitle: 'Dodir koji otpušta napetost',
-    description:
-      'Usporavanje počinje već pri ulasku. Masaža je tvoj trenutak za odmor, dublji udah i osjećaj da se tijelo ponovno vraća sebi.',
-    treatments: ['Opuštajuće masaže', 'Masaža i piling', 'Calma ritual'],
-    image: '/images/masaza.jpg',
-    alt: 'Nanošenje masažnog ulja tijekom tretmana tijela',
-  },
-  {
-    number: '04',
-    title: 'Depilacije',
-    subtitle: 'Nježniji put do glatke kože',
-    description:
-      'Precizan i pažljiv pristup uz fokus na udobnost kože. Dostupna je i depilacija prirodnom šećernom pastom, pogodna za osjetljivu kožu.',
-    treatments: ['Šećerna pasta', 'Depilacija tijela', 'Njega osjetljive kože'],
-    image: '/images/depilacija.jpg',
-    alt: 'Njega glatke kože nogu u salonu Calma Beauty',
-  },
-];
+import { services } from './treatments';
+import { TreatmentMenu } from './treatment-menu';
 
 const reviews = [
   {
@@ -164,7 +126,7 @@ export default function Home() {
 
         <nav className="desktop-nav" aria-label="Glavna navigacija">
           <a href="#intro">O nama</a>
-          <a href="#usluge">Tretmani</a>
+          <TreatmentMenu />
           <a href="#recenzije">Recenzije</a>
           <a href="#kontakt">Kontakt</a>
         </nav>
@@ -178,7 +140,8 @@ export default function Home() {
       </header>
 
       <main id="top">
-        <section className="hero" aria-labelledby="hero-title">
+        <div className="hero-scroll-scene">
+        <PinnedHero>
           <div className="hero-copy">
             <HeroHeading id="hero-title" delay={0.12}>
               Mjesto gdje
@@ -211,9 +174,10 @@ export default function Home() {
           </div>
 
           <HeroVisual />
-        </section>
+        </PinnedHero>
 
         <HorizontalIntro />
+        </div>
 
         <section className="services section-shell" id="usluge" aria-labelledby="services-title">
           <Reveal className="section-heading">
@@ -229,7 +193,7 @@ export default function Home() {
             {services.map((service) => (
               <RevealArticle className="service-card" key={service.number}>
                 <div className="service-number">{service.number}</div>
-                <div className="service-image-wrap">
+                <a className="service-image-wrap" href={`/tretmani/${service.slug}`} aria-label={`Istraži ${service.title}`}>
                   <img
                     src={service.image}
                     alt={service.alt}
@@ -237,17 +201,17 @@ export default function Home() {
                     height="640"
                     loading="lazy"
                   />
-                </div>
+                </a>
                 <div className="service-copy">
                   <p>{service.subtitle}</p>
-                  <h3>{service.title}</h3>
+                  <h3><a href={`/tretmani/${service.slug}`}>{service.title}</a></h3>
                   <p className="service-description">{service.description}</p>
                   <ul aria-label={`Izdvojeno iz kategorije ${service.title}`}>
                     {service.treatments.map((treatment) => (
                       <li key={treatment}>{treatment}</li>
                     ))}
                   </ul>
-                  <MagneticLink className="round-link" href="tel:+385916015254" aria-label={`Rezerviraj ${service.title}`}>
+                  <MagneticLink className="round-link" href={`/tretmani/${service.slug}`} aria-label={`Saznaj više: ${service.title}`}>
                     <ArrowUpRight aria-hidden="true" size={19} />
                   </MagneticLink>
                 </div>
@@ -335,7 +299,7 @@ export default function Home() {
           </Reveal>
         </section>
 
-        <section className="contact" id="kontakt" aria-labelledby="contact-title">
+        <ContactReveal>
           <div className="contact-top section-shell">
             <Reveal className="contact-title">
               <p className="section-index">POSJETI NAS</p>
@@ -396,13 +360,15 @@ export default function Home() {
               <a href="#usluge">Tretmani</a>
               <a href="#recenzije">Recenzije</a>
               <a href="#kontakt">Kontakt</a>
+              <a href="/cjenik.csv" download>Cjenik</a>
             </div>
             <small className="footer-meta">
               <span>CALMA BEAUTY, OBRT ZA USLUGE, VL. MARINA NJEGAČ, ZAGREB, DANKOVEČKA ULICA 12</span>
               <span>© 2026 Calma Beauty · Zagreb</span>
             </small>
+            <small className="footer-credit"><a href="https://timdsgn.com/index.html" target="_blank" rel="noopener noreferrer">Powered by TIMDSGN</a></small>
           </footer>
-        </section>
+        </ContactReveal>
       </main>
 
       <a className="mobile-cta" href="tel:+385916015254">

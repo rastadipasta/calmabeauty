@@ -1,5 +1,8 @@
 'use client';
 
+import { TreatmentMenu } from './treatment-menu';
+import { useInternalNavigation } from './page-transition';
+
 import {
   AnimatePresence,
   motion,
@@ -22,6 +25,7 @@ import {
 const luxeEase = [0.22, 1, 0.36, 1] as const;
 
 export function PageLoader() {
+  const internalNavigation = useInternalNavigation();
   const reduceMotion = useReducedMotion();
   const [visible, setVisible] = useState(true);
 
@@ -32,7 +36,7 @@ export function PageLoader() {
 
   return (
     <AnimatePresence>
-      {visible ? (
+      {visible && !internalNavigation ? (
         <motion.div
           className="loader"
           aria-hidden="true"
@@ -71,10 +75,11 @@ export function PageLoader() {
 }
 
 export function PageEntrance({ children }: PropsWithChildren) {
+  const internalNavigation = useInternalNavigation();
   const reduceMotion = useReducedMotion();
   return (
     <motion.div
-      initial={reduceMotion ? false : { opacity: 0 }}
+      initial={reduceMotion || internalNavigation ? false : { opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.65, delay: reduceMotion ? 0 : 0.88 }}
     >
@@ -83,7 +88,7 @@ export function PageEntrance({ children }: PropsWithChildren) {
   );
 }
 
-export function MobileMenu() {
+export function MobileMenu({ homePath = '' }: { homePath?: string }) {
   const [open, setOpen] = useState(false);
   const reduceMotion = useReducedMotion();
   const iconTransition = reduceMotion
@@ -118,10 +123,10 @@ export function MobileMenu() {
             exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -8, clipPath: 'inset(0 0 100% 0)' }}
             transition={{ duration: reduceMotion ? 0 : 0.42, ease: luxeEase }}
           >
-            <a href="#intro" onClick={() => setOpen(false)}>O nama</a>
-            <a href="#usluge" onClick={() => setOpen(false)}>Tretmani</a>
-            <a href="#recenzije" onClick={() => setOpen(false)}>Recenzije</a>
-            <a href="#kontakt" onClick={() => setOpen(false)}>Kontakt</a>
+            <a href={`${homePath}#intro`} onClick={() => setOpen(false)}>O nama</a>
+            <TreatmentMenu onNavigate={() => setOpen(false)} />
+            <a href={`${homePath}#recenzije`} onClick={() => setOpen(false)}>Recenzije</a>
+            <a href={`${homePath}#kontakt`} onClick={() => setOpen(false)}>Kontakt</a>
           </motion.nav>
         ) : null}
       </AnimatePresence>
@@ -251,13 +256,10 @@ export function RevealFigure({ children, className = '', delay = 0 }: PropsWithC
 }
 
 export function HeroVisual() {
-  const ref = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
-  const imageY = useTransform(scrollYProgress, [0, 1], ['0%', '12%']);
 
   return (
-    <motion.div ref={ref} className="hero-visual">
+    <motion.div className="hero-visual">
       <motion.div
         className="hero-image-mask image-noise"
         initial={reduceMotion ? false : { clipPath: 'inset(0 0 100% 0)' }}
@@ -271,7 +273,6 @@ export function HeroVisual() {
           height="3200"
           loading="eager"
           fetchPriority="high"
-          style={{ y: reduceMotion ? 0 : imageY }}
           initial={reduceMotion ? false : { scale: 1.1 }}
           animate={{ scale: 1.035 }}
           transition={{ duration: 1.6, delay: reduceMotion ? 0 : 0.9, ease: luxeEase }}
@@ -279,6 +280,37 @@ export function HeroVisual() {
         <div className="hero-shade" />
       </motion.div>
     </motion.div>
+  );
+}
+
+export function PinnedHero({ children }: PropsWithChildren) {
+  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+    const updateHeight = () => {
+      element.style.setProperty('--hero-height', `${element.getBoundingClientRect().height}px`);
+    };
+    updateHeight();
+    const observer = new ResizeObserver(updateHeight);
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+
+  return <section ref={ref} className="hero hero-pinned" aria-labelledby="hero-title">{children}</section>;
+}
+
+export function ContactReveal({ children }: PropsWithChildren) {
+  const reduceMotion = useReducedMotion();
+  return (
+    <motion.section className="contact" id="kontakt" aria-labelledby="contact-title"
+      initial={reduceMotion ? false : { opacity: 0, y: 48 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.08 }}
+      transition={{ duration: reduceMotion ? 0 : 0.8, ease: luxeEase }}>
+      {children}
+    </motion.section>
   );
 }
 
