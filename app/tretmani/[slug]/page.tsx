@@ -85,7 +85,7 @@ export default async function TreatmentPage({ params }: Props) {
                 <dl className="treatment-explained">
                   <div><dt>Kako izgleda tretman</dt><dd>{item.how}</dd></div>
                   <div><dt>Zašto ga odabrati</dt><dd>{item.why}</dd></div>
-                  <div><dt>Za koga je namijenjen</dt><dd>{item.forWhom}</dd></div>
+                  <div><dt>Za koga je tretman namijenjen</dt><dd>{item.forWhom}</dd></div>
                 </dl>
                 {item.note && <p className="treatment-detail-note">{item.note}</p>}
                 <div className="treatment-booking">
