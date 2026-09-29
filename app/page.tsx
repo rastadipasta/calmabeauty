@@ -247,7 +247,7 @@ export default function Home() {
           </Reveal>
         </section>
 
-        <section className="reviews section-shell" id="recenzije" aria-labelledby="reviews-title">
+        <section className="reviews section-shell" id="recenzije" aria-labelledby="reviews-title" style={{ scrollMarginTop: 'calc(2rem - clamp(6rem, 11vw, 10rem))' }}>
           <Reveal className="reviews-lead">
             <p className="section-index">RIJEČI KLIJENTICA</p>
             <h2 id="reviews-title">Povjerenje se osjeti u <em>detaljima.</em></h2>
