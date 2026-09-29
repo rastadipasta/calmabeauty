@@ -1,9 +1,10 @@
+import { HeaderActions } from '../../header-actions';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 /* Native links are intercepted by the shared iris page transition. */
 /* oxlint-disable next/no-html-link-for-pages */
 import { notFound } from 'next/navigation';
-import { ArrowLeft, ArrowUpRight, MapPin, Phone } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, Phone } from 'lucide-react';
 import { MobileMenu } from '../../motion-elements';
 import { services } from '../../treatments';
 import { treatmentFaqs } from '../../treatment-faqs';
@@ -46,12 +47,7 @@ export default async function TreatmentPage({ params }: Props) {
           <a href="/#intro">O nama</a><TreatmentMenu />
           <a href="/#recenzije">Recenzije</a><a href="/#kontakt">Kontakt</a>
         </nav>
-        <div className="header-actions">
-          <a className="header-location" href="https://www.google.com/maps/dir/?api=1&destination=Dankove%C4%8Dka%20ulica%2012%2C%2010000%20Zagreb&travelmode=driving" target="_blank" rel="noopener noreferrer" aria-label="Prikaži lokaciju salona na Google Maps" title="Lokacija salona">
-            <MapPin aria-hidden="true" size={18} strokeWidth={1.5} />
-          </a>
-          <a className="header-cta" href="tel:+385916015254"><Phone aria-hidden="true" size={15} /><span>Rezerviraj termin</span></a>
-        </div>
+        <HeaderActions />
         <MobileMenu homePath="/" />
       </header>
       <main id="sadrzaj" className="treatment-page">
