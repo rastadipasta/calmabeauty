@@ -346,7 +346,8 @@ export function HorizontalIntro() {
             <p>
               Calma Beauty je salon za žene u kojem svaki dolazak počinje razgovorom,
               a svaki tretman prati miran, individualan pristup. Ne tražimo prečace —
-              biramo ono što tvojoj koži i tijelu u tom trenutku stvarno treba.
+              biramo ono što tvojoj koži i tijelu<br />
+              u tom trenutku stvarno treba.
             </p>
             <a className="text-link" href="tel:+385916015254">
               Pronađimo tvoj Calma ritual <ArrowUpRight aria-hidden="true" size={16} />
