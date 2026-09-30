@@ -160,9 +160,8 @@ export function BackToTop() {
           whileHover={reduceMotion ? undefined : { y: -3 }}
           whileTap={reduceMotion ? undefined : { scale: 0.93 }}
           onClick={(event) => {
-            if (reduceMotion) return;
             event.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo({ top: 0, behavior: reduceMotion ? 'instant' : 'smooth' });
           }}
         >
           <ArrowUp aria-hidden="true" size={17} strokeWidth={1.5} />

@@ -8,7 +8,7 @@ import Image from 'next/image';
 /* oxlint-disable next/no-html-link-for-pages */
 import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowUpRight, Phone } from 'lucide-react';
-import { MobileMenu } from '../../motion-elements';
+import { BackToTop, MobileMenu } from '../../motion-elements';
 import { services } from '../../treatments';
 import { treatmentFaqs } from '../../treatment-faqs';
 import { TreatmentMenu } from '../../treatment-menu';
@@ -42,7 +42,7 @@ export default async function TreatmentPage({ params }: Props) {
   return (
     <>
       <a className="skip-link" href="#sadrzaj">Preskoči na sadržaj</a>
-      <header className="site-header">
+      <header className="site-header" id="top">
         <a href="/" aria-label="Calma Beauty — početna">
           <span className="brand-mark"><span>CALMA</span><small>BEAUTY</small></span>
         </a>
@@ -139,6 +139,7 @@ export default async function TreatmentPage({ params }: Props) {
         <div><a href="/#kontakt">Kontakt</a><a href="/cjenik.csv" download>Cjenik</a></div>
         <small className="footer-credit"><a href="https://timdsgn.com/index.html" target="_blank" rel="noopener noreferrer">Powered by TIMDSGN</a></small>
       </footer>
+      <BackToTop />
     </>
   );
 }
