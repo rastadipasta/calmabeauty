@@ -1,4 +1,6 @@
 import { HeaderActions } from '../../header-actions';
+import { TreatmentSlide } from '../../treatment-slide';
+import slideStyles from '../../treatment-slide.module.css';
 import faqPhoneStyles from './faq-phone.module.css';
 import type { Metadata } from 'next';
 import Image from 'next/image';
@@ -73,9 +75,9 @@ export default async function TreatmentPage({ params }: Props) {
           </nav>
           <p className="treatment-pricing-draft"><strong>Radni prijedlog cjenika.</strong> Prikazani iznosi i referentne cijene služe za pregled nove ponude i još nisu važeći cjenik salona. Točnu cijenu potvrđujemo pri rezervaciji.</p>
         </div>
-        <div className="treatment-collection section-shell">
+        <div className={`treatment-collection section-shell ${slideStyles.collection}`}>
           {details.map((item, index) => (
-            <section className="treatment-detail" id={item.id} key={item.id} aria-labelledby={`${item.id}-title`}>
+            <TreatmentSlide id={item.id} key={item.id}>
               <figure className="treatment-detail-visual">
                 <Image src={item.image} alt="" fill sizes="(max-width: 800px) 100vw, 40vw" style={{ objectPosition: item.imagePosition }} />
                 <figcaption><span>CALMA BEAUTY</span><span>{String(index + 1).padStart(2, '0')} / {String(details.length).padStart(2, '0')}</span></figcaption>
@@ -102,7 +104,7 @@ export default async function TreatmentPage({ params }: Props) {
                   <a className="text-link" href={`https://wa.me/385916015254?text=${encodeURIComponent(`Pozdrav! Zanima me ${item.title}. Možete li mi potvrditi cijenu i slobodne termine?`)}`} aria-label={`Upit za tretman: ${item.title}`}>Dogovori termin <ArrowUpRight size={18} aria-hidden="true" /></a>
                 </div>
               </div>
-            </section>
+            </TreatmentSlide>
           ))}
         </div>
         {slug === 'tretmani-lica' && <aside className="treatment-care-note section-shell">
