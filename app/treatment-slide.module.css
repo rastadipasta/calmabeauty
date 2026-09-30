@@ -1,10 +1,12 @@
 .collection { position: relative; isolation: isolate; }
+.collection:global(.section-shell) { padding-inline: 0; }
 .collection > .slide {
   position: sticky;
   top: min(82px, calc(100svh - var(--slide-height, 100svh)));
   min-height: calc(100svh - 82px);
+  padding-inline: clamp(1.25rem, 7vw, 7.5rem);
   background: var(--ivory);
-  box-shadow: 0 -18px 30px -30px rgba(33, 27, 22, .3);
+  box-shadow: none;
 }
 @media (max-width: 800px) {
   .collection > .slide {
