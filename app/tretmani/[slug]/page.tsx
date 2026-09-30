@@ -1,4 +1,5 @@
 import { HeaderActions } from '../../header-actions';
+import faqPhoneStyles from './faq-phone.module.css';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 /* Native links are intercepted by the shared iris page transition. */
@@ -113,7 +114,7 @@ export default async function TreatmentPage({ params }: Props) {
           <div className="faq-heading">
             <p className="section-index">PITANJA I ODGOVORI</p>
             <h2 id="faq-title">Prije tvog <em>dolaska.</em></h2>
-            <p>Sve počinje dobrim razgovorom. Za dodatna pitanja tu smo na <a href="tel:+385916015254">091 601 5254</a>.</p>
+            <p>Sve počinje dobrim razgovorom. Za dodatna pitanja tu smo na <span className={faqPhoneStyles.phone}><a href="tel:+385916015254">091 601 5254</a>.</span></p>
           </div>
           <div className="faq-list">{treatmentFaqs[slug].map((faq, index) => (
             <details key={faq.question} name="treatment-faq">
