@@ -36,7 +36,7 @@ export function PageLoader() {
   }, [reduceMotion]);
 
   return (
-    <AnimatePresence>
+    <AnimatePresence onExitComplete={() => window.dispatchEvent(new Event('calma:hero-ready'))}>
       {visible && !internalNavigation ? (
         <motion.div
           className="loader"
@@ -187,10 +187,17 @@ export function HeroReveal({ children, delay = 0, className }: PropsWithChildren
 
 function useHeroMotion(delay: number) {
   const reduceMotion = useReducedMotion();
+  const [ready, setReady] = useState(false);
+  useEffect(() => {
+    const reveal = () => setReady(true);
+    if (!document.querySelector('.loader')) reveal();
+    window.addEventListener('calma:hero-ready', reveal);
+    return () => window.removeEventListener('calma:hero-ready', reveal);
+  }, []);
   return {
-    initial: reduceMotion ? false as const : { opacity: 0, y: 26 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.8, delay: reduceMotion ? 0 : 1.05 + delay, ease: luxeEase },
+    initial: reduceMotion ? false as const : { opacity: 0, y: 16 },
+    animate: ready || reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 },
+    transition: { duration: reduceMotion ? 0 : 1.1, delay: reduceMotion ? 0 : delay, ease: luxeEase },
   };
 }
 
@@ -257,14 +264,13 @@ export function RevealFigure({ children, className = '', delay = 0 }: PropsWithC
 
 export function HeroVisual() {
   const reduceMotion = useReducedMotion();
+  const heroMotion = useHeroMotion(0.14);
 
   return (
     <motion.div className="hero-visual">
       <motion.div
         className="hero-image-mask image-noise"
-        initial={reduceMotion ? false : { clipPath: 'inset(0 0 100% 0)' }}
-        animate={{ clipPath: 'inset(0 0 0% 0)' }}
-        transition={{ duration: 1.15, delay: reduceMotion ? 0 : 0.9, ease: luxeEase }}
+        {...heroMotion}
       >
         <motion.img
           src="/images/hero-face.jpg"
@@ -273,7 +279,7 @@ export function HeroVisual() {
           height="3200"
           loading="eager"
           fetchPriority="high"
-          initial={reduceMotion ? false : { scale: 1.1 }}
+          initial={reduceMotion ? false : { scale: 1.055 }}
           animate={{ scale: 1.035 }}
           transition={{ duration: 1.6, delay: reduceMotion ? 0 : 0.9, ease: luxeEase }}
         />

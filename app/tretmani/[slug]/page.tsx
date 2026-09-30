@@ -1,4 +1,5 @@
 import { HeaderActions } from '../../header-actions';
+import heroRevealStyles from '../../hero-reveal.module.css';
 import { TreatmentSlide } from '../../treatment-slide';
 import slideStyles from '../../treatment-slide.module.css';
 import faqPhoneStyles from './faq-phone.module.css';
@@ -54,7 +55,7 @@ export default async function TreatmentPage({ params }: Props) {
         <MobileMenu homePath="/" />
       </header>
       <main id="sadrzaj" className="treatment-page">
-        <section className="treatment-hero section-shell" aria-labelledby="treatment-title">
+        <section className={`treatment-hero section-shell ${heroRevealStyles.hero}`} aria-labelledby="treatment-title">
           <div className="treatment-copy">
             <a className="text-link treatment-back" href="/#usluge"><ArrowLeft size={15} aria-hidden="true" /> Svi tretmani</a>
             <p className="section-index">CALMA BEAUTY</p>
